@@ -31,3 +31,13 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Scan for vulnerabilities
+        run: docker scan -f Dockerfile pavelmc/openvpn-as > vul_scan_report.txt
+
+      - name: Upload the result to an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: vul_scan_report.txt
+          path: vul_scan_report.txt
+          retention-days: 30
