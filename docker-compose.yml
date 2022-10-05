@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+
+  openvpn:
+    image: stdevpavelmc/openvpn-as:latest
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    container_name: openvpn-as
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      ADMIN: admin
+      PASSWD: qWQfB6+bXAczUEXUj5qbfX8mckA
+    ports:
+      - "943"
+      - "1194/udp"
+      - "9443"
+    volumes:
+      - ./openvpn:/config
+      
