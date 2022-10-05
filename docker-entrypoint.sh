@@ -28,7 +28,7 @@ if [ ! -f /config/configured ]; then
     fi
 
     echo "installing openvpn-as for the first time"
-	apt-get update && apt-get install -y openvpn-as
+	apt-get update && apt-get reinstall -y openvpn-as
 
     # change dirs
     sed -i \
