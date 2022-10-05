@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
   openvpn:
-    image: stdevpavelmc/openvpn-as:latest
+    image: pavelmc/openvpn-as:latest
     build:
       context: "."
       dockerfile: Dockerfile
@@ -20,4 +20,6 @@ services:
       - "9443"
     volumes:
       - ./openvpn:/config
-      
+      # Only on dev
+      # - ./pkgs:/var/cache/apt/
+      # - ./apt:/var/lib/apt/

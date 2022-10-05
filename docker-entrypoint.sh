@@ -82,16 +82,16 @@ fi
 ### Startup secuence
 cd /config
 
-# check if the ADMIN & PASSWD was passed
-if [ -z "${ADMIN}" ] ; then
-    ADMIN="openvpnadmin"
-fi
-if [ -z "${PASSWD}" ] ; then
-    PASSWD=''
-fi
-
 NOASCONFIG='DELETE\n'
-ASCONFIG='yes\nyes\n1\nrsa\n4096\nrsa\n4096\n943\n9443\nyes\nyes\nno\nnon\'${ADMIN}'\n'${PASSWD}'\n\n'
+
+# check if the ADMIN & PASSWD was passed
+if [ -z "${ADMIN}" -o -z "${PASSWD}"] ; then
+    # no credentials, use defaults
+    ASCONFIG='yes\nyes\n1\nrsa\n4096\nrsa\n4096\n943\n9443\nyes\nyes\nno\n\n\n\n'
+else
+    # credential passed
+    ASCONFIG='yes\nyes\n1\nrsa\n4096\nrsa\n4096\n943\n9443\nyes\nyes\nno\nno\'${ADMIN}'\n'${PASSWD}'\n\n'
+fi
 
 if [ ! -f "/config/etc/as.conf" ]; then
 CONFINPUT=$ASCONFIG
@@ -102,8 +102,6 @@ fi
 if [ $(find /config/etc/db -type f | wc -l) -eq 0 -o ! -f "/config/etc/as.conf" ] ; then
     printf "${CONFINPUT}" | /config/bin/ovpn-init > /config/init.log
 fi
-
-#chown -R openvpn_as:openvpn_as /config
 
 if [ -z "$INTERFACE" ]; then
 SET_INTERFACE="eth0"
