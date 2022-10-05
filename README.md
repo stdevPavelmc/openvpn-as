@@ -4,7 +4,6 @@ An updated version of the now **DEPRECATED** [linuxserver/openvpn-as](https://gi
 
 [![GitHub Stars](https://img.shields.io/github/stars/stdevPavelms/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/stdevPavelmc/openvpn-as)
 [![GitHub Release](https://img.shields.io/github/release/stdevPavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/stdevPavelmc/openvpn-as/releases)
-[![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stdevPavelmc&message=GitHub%20Package&logo=github)](https://github.com/stdevPavelmc/openvpn-as/packages)
 [![Docker Pulls](https://img.shields.io/docker/pulls/pavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/pavelmc/openvpn-as)
 [![Docker Stars](https://img.shields.io/docker/stars/pavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/pavelmc/openvpn-as)
 
