@@ -4,7 +4,6 @@ set -e
 ### timezone config: UTC
 ln -fs "/usr/share/zoneinfo/Etc/UTC" /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata || exit
-apt-get install tree
 
 ### Common folders and check
 mkdir -p /openvpn/{tmp,sock,pid} /dev/net /config/log /config/etc/tmp
