@@ -36,7 +36,7 @@ To ensure your devices can connect to your VPN properly, goto Configuration -> N
 
 ## Usage
 
-### docker-compose ([recommended](https://docs.linuxserver.io/general/docker-compose))
+### docker-compose (RECOMMENDED)
 
 Compatible with docker-compose v3 schemas, see the example deployment file [docker-compose.yml](docker-compose.yml)
 
