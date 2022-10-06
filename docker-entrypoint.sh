@@ -5,8 +5,11 @@ set -e
 ln -fs "/usr/share/zoneinfo/Etc/UTC" /etc/localtime
 dpkg-reconfigure -f noninteractive tzdata || exit
 
-### Common folders and check
+### force creation of common folders
 mkdir -p /openvpn/{tmp,sock,pid} /dev/net /config/log /config/etc/tmp
+chown -R openvpn_as:openvpn_as /openvpn
+
+# common tweaks
 if [ ! -f /usr/bin/systemctl ] ; then
     ln -s /usr/bin/true /usr/bin/systemctl
 fi
@@ -23,6 +26,15 @@ if [ ! -c /dev/net/tun ]; then
     mknod /dev/net/tun c 10 200
 fi
 
+# function to move dirs in the container to safe places
+function move_dirs()
+{
+    sed -i \
+        -e 's#~/tmp#/openvpn/tmp#g' \
+        -e 's#~/sock#/openvpn/sock#g' \
+        "$1"
+}
+
 ### Initial config
 if [ ! -f /config/configured ]; then
     # initial config follows
@@ -31,10 +43,8 @@ if [ ! -f /config/configured ]; then
 	apt-get update && apt-get reinstall -y openvpn-as
 
     # change dirs
-    sed -i \
-        -e 's#~/tmp#/openvpn/tmp#g' \
-        -e 's#~/sock#/openvpn/sock#g' \
-        /config/etc/as_templ.conf
+    move_dirs "/config/etc/as_templ.conf"
+    move_dirs "/config/etc/as.conf"
 
     # if all gone ok, touch the configured flag
     touch /config/configured
@@ -56,10 +66,8 @@ else
     apt-get update && apt-get reinstall -y openvpn-as
 
     # change dirs
-    sed -i \
-        -e 's#~/tmp#/openvpn/tmp#g' \
-        -e 's#~/sock#/openvpn/sock#g' \
-        /config/etc/as_templ.conf
+    move_dirs "/config/etc/as_templ.conf"
+    move_dirs "/config/etc/as.conf"
     
     # restore backups
     cd /config/backup || exit
@@ -113,6 +121,7 @@ fi
 /config/scripts/confdba -mk "vpn.daemon.0.listen.ip_address" -v "$SET_INTERFACE"
 /config/scripts/confdba -mk "vpn.daemon.0.server.ip_address" -v "$SET_INTERFACE"
 
+# run the openvpn service
 /config/scripts/openvpnas -n -l - -p /openvpn/pid/openvpn.pid &
 
 # run CMD parameters
