@@ -7,7 +7,6 @@ dpkg-reconfigure -f noninteractive tzdata || exit
 
 ### force creation of common folders
 mkdir -p /openvpn/{tmp,sock,pid} /dev/net /config/log /config/etc/tmp
-chown -R openvpn_as:openvpn_as /openvpn
 
 # common tweaks
 if [ ! -f /usr/bin/systemctl ] ; then
@@ -30,8 +29,8 @@ fi
 function move_dirs()
 {
     sed -i \
-        -e 's#~/tmp#/openvpn/tmp#g' \
-        -e 's#~/sock#/openvpn/sock#g' \
+        -e 's#~/tmp#/tmp#g' \
+        -e 's#~/sock#/tmp/sock#g' \
         "$1"
 }
 
