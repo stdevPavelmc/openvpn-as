@@ -18,14 +18,14 @@ fi
 rm -rdf /usr/local/openvpn_as || exit
 ln -s /config /usr/local/openvpn_as
 
+# create tun device
+if [ ! -c /dev/net/tun ]; then
+    mknod /dev/net/tun c 10 200
+fi
+
 ### Initial config
 if [ ! -f /config/configured ]; then
     # initial config follows
-
-    # create tun device
-    if [ ! -c /dev/net/tun ]; then
-    mknod /dev/net/tun c 10 200
-    fi
 
     echo "installing openvpn-as for the first time"
 	apt-get update && apt-get reinstall -y openvpn-as
