@@ -6,6 +6,9 @@ An updated version of the now **DEPRECATED** [linuxserver/openvpn-as](https://gi
 [![GitHub Release](https://img.shields.io/github/release/stdevPavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/stdevPavelmc/openvpn-as/releases)
 [![Docker Pulls](https://img.shields.io/docker/pulls/pavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/pavelmc/openvpn-as)
 [![Docker Stars](https://img.shields.io/docker/stars/pavelmc/openvpn-as.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/pavelmc/openvpn-as)
+# DEPRECATED & ARCHIVED!
+
+Please do not use it on production, this was a personal repo and I made it public just for the record. If you want something similar just fork it and go have fun yourself.
 
 [Openvpn-as](https://openvpn.net/index.php/access-server/overview.html) is a full featured secure network tunneling VPN software solution that integrates OpenVPN server capabilities, enterprise management capabilities, simplified OpenVPN Connect UI, and OpenVPN Client software packages that accommodate Windows, MAC, Linux, Android, and iOS environments. OpenVPN Access Server supports a wide range of configurations, including secure and granular remote access to internal network and/ or private cloud network resources and applications with fine-grained access control.
 
